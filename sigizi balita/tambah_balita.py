@@ -1,4 +1,5 @@
 import re
+import time
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 
@@ -16,8 +17,16 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("button", name=" Login").click()
     page.get_by_role("link", name="Pelayanan Kesehatan").click()
     page.get_by_role("link", name=" ENTRY ").click()
-    page.get_by_role("link", name=" Balita ").click()
-    page.get_by_role("link", name="Tambah Balita").click()
+    # time.sleep(1)
+    # expect(page.get_by_text("Welcome")).to_be_visible() 
+    # page_content = page.content()
+    # with open("page.html", "w", encoding="utf-8") as f:
+    #     f.write(page_content) 
+    # expect(page.get_by_role("link", name=" Balita ")).to_be_visible()
+    page.get_by_role("link", name="Balita", class_name="menu-text green").click(force=True)
+    page.get_by_text("Tambah Balita").click()
+    # page.get_by_role("link", name="Tambah Balita").click()
+    # expect(page.locator("#sidebar")).to_contain_text("Balita")
     page.get_by_placeholder("Anak ke").click()
     page.get_by_placeholder("Anak ke").fill("1")
     page.locator("#TL").click()
