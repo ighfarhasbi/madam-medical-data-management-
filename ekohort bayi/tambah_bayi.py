@@ -20,7 +20,7 @@ def run(playwright: Playwright) -> None:
         page.wait_for_timeout(100)
         page.get_by_role("textbox", name="Pilih Kabupaten").click()
         kab = page.get_by_role("option", name="KABUPATEN TASIKMALAYA")
-        # print(kab)
+        print(kab)
     page.get_by_role("option", name="KABUPATEN TASIKMALAYA").click()
     page.get_by_role("textbox", name="Provinsi Kabupaten/Kota").click()
     page.get_by_role("textbox", name="Provinsi Kabupaten/Kota").fill("081224600500")
