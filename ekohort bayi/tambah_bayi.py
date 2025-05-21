@@ -94,7 +94,10 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("textbox", name="Status Kesejahteraan").click()
     page.get_by_role("textbox", name="Status Kesejahteraan").fill("menengah ke atas")
     page.get_by_role("textbox", name="Jam Lahir").click()
-    page.get_by_text("11:39").click()
+    # Klik elemen dropdown pertama yang terlihat
+    page.locator("div:visible").nth(0).click()  # Memilih elemen dropdown pertama yang terlihat
+    # page.locator("div").filter(has_text="00:0000:0500:1000:1500:2000:").nth(2).click()
+    # page.get_by_text("11:39").click()
     page.locator("a").filter(has_text="Select Tipe Tempat Lahir").click()
     page.locator("#tipe_tempat_lahir_chosen").get_by_text("Puskesmas").click()
     page.locator("a").filter(has_text="Select Metode Persalinan").click()
@@ -202,3 +205,6 @@ def run(playwright: Playwright) -> None:
 
 with sync_playwright() as playwright:
     run(playwright)
+
+# page.get_by_role("button").filter(has_text=re.compile(r"^$")).nth(4).click() tombol bawah
+# page.get_by_role("button").filter(has_text=re.compile(r"^$")).nth(3).click() tombol atas
