@@ -11,9 +11,10 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("textbox", name="Pilih Provinsi").click()
     page.get_by_role("searchbox", name="Search").fill("jawa")
     page.get_by_role("option", name="JAWA BARAT").click()
+    klik = page.get_by_role("textbox", name="Pilih Kabupaten")
     kab = page.get_by_role("textbox", name="Pilih Kabupaten").click()
-    # print(kab)
-    while kab is None:
+    print(klik)
+    for i in range(10):
         print("waiting for kabupaten")
         page.wait_for_timeout(1000)
         page.get_by_role("textbox", name="Pilih Kabupaten").click()
@@ -21,6 +22,9 @@ def run(playwright: Playwright) -> None:
         page.get_by_role("textbox", name="Pilih Kabupaten").click()
         kab = page.get_by_role("option", name="KABUPATEN TASIKMALAYA")
         print(kab)
+        if kab.is_visible():
+            print("kabupaten visible")
+            break
     page.get_by_role("option", name="KABUPATEN TASIKMALAYA").click()
     page.get_by_role("textbox", name="Provinsi Kabupaten/Kota").click()
     page.get_by_role("textbox", name="Provinsi Kabupaten/Kota").fill("081224600500")
@@ -90,7 +94,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("textbox", name="Status Kesejahteraan").click()
     page.get_by_role("textbox", name="Status Kesejahteraan").fill("menengah ke atas")
     page.get_by_role("textbox", name="Jam Lahir").click()
-    page.get_by_text("11:05").click()
+    page.get_by_text("11:39").click()
     page.locator("a").filter(has_text="Select Tipe Tempat Lahir").click()
     page.locator("#tipe_tempat_lahir_chosen").get_by_text("Puskesmas").click()
     page.locator("a").filter(has_text="Select Metode Persalinan").click()

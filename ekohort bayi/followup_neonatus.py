@@ -10,13 +10,17 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("textbox", name="Pilih Provinsi").click()
     page.get_by_role("option", name="JAWA BARAT").click()
     kab = page.get_by_role("textbox", name="Pilih Kabupaten").click()
-    while kab is None:
+    for i in range(10):
         print("waiting for kabupaten")
         page.wait_for_timeout(1000)
         page.get_by_role("textbox", name="Pilih Kabupaten").click()
         page.wait_for_timeout(100)
         page.get_by_role("textbox", name="Pilih Kabupaten").click()
         kab = page.get_by_role("option", name="KABUPATEN TASIKMALAYA")
+        print(kab)
+        if kab.is_visible():
+            print("kabupaten visible")
+            break
     page.get_by_role("option", name="KABUPATEN TASIKMALAYA").click()
     page.get_by_role("textbox", name="Provinsi Kabupaten/Kota").click()
     page.get_by_role("textbox", name="Provinsi Kabupaten/Kota").fill("08")
