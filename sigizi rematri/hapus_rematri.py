@@ -8,7 +8,7 @@ def run(playwright: Playwright) -> None:
     page = context.new_page()
     page.goto("https://sigizikesga.kemkes.go.id/login_sisfo/")
     page.get_by_role("textbox", name="Tampilkan Password ").click()
-    page.get_by_role("textbox", name="Tampilkan Password ").fill("sukaasih")
+    page.get_by_role("textbox", name="Tampilkan Password ").fill("pass_here")
     page.get_by_role("textbox", name="Masukan kata yang terlihat").click()
     page.get_by_role("textbox", name="Masukan kata yang terlihat").fill("kereta")
     page.get_by_role("button", name=" Login").click()
