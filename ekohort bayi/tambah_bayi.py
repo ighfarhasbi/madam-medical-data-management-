@@ -27,9 +27,9 @@ def run(playwright: Playwright) -> None:
             break
     page.get_by_role("option", name="KABUPATEN TASIKMALAYA").click()
     page.get_by_role("textbox", name="Provinsi Kabupaten/Kota").click()
-    page.get_by_role("textbox", name="Provinsi Kabupaten/Kota").fill("081224600500")
+    page.get_by_role("textbox", name="Provinsi Kabupaten/Kota").fill("phone_number")
     page.get_by_role("textbox", name="Password").click()
-    page.get_by_role("textbox", name="Password").fill("123456")
+    page.get_by_role("textbox", name="Password").fill("password_here")
     page.get_by_role("button", name="Secure login").click()
     page.get_by_role("link", name=" Pelayanan KIA ").click()
     page.get_by_role("link", name=" Pelayanan Anak").click()
@@ -206,5 +206,4 @@ def run(playwright: Playwright) -> None:
 with sync_playwright() as playwright:
     run(playwright)
 
-# page.get_by_role("button").filter(has_text=re.compile(r"^$")).nth(4).click() tombol bawah
-# page.get_by_role("button").filter(has_text=re.compile(r"^$")).nth(3).click() tombol atas
+# page.get_by_text("Error code").click() jika halaman error
